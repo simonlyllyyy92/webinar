@@ -1,7 +1,7 @@
 import { fork, put, takeLatest, select } from "redux-saga/effects"
 import { ActionTypes } from "./actionType"
 import axiosBaseUrl from "../../axios/baseUrl"
-import axios from "axios"
+
 //handlers
 function* handleLoginUser(action) {
   // const {a, b} = action.payload
@@ -18,6 +18,7 @@ function* handleLoginUser(action) {
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
         },
       }
     )
