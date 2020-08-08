@@ -1,0 +1,150 @@
+@import "../../utils/utils.styles.scss";
+.toolbar {
+  width: 90%;
+  height: 56px;
+
+  .toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+  }
+
+  .toolbar_logo {
+    width: 20%;
+    margin-left: 1rem;
+    margin-right: 24px;
+    display: flex;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+
+    .dropdown {
+      display: inline-block;
+      &:hover {
+        .dropdown-content {
+          display: block;
+        }
+      }
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+
+      a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 1rem;
+
+        &:hover {
+          background-color: $dark-blue;
+          color: white;
+        }
+      }
+    }
+
+    li {
+      float: left;
+      a,
+      .dropbtn {
+        display: inline-block;
+        color: $dark-blue;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $dark-blue;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .toolbar_navigation {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+  }
+  .toolbar_navigation_items {
+    display: flex;
+    width: 240px;
+    justify-content: space-between;
+
+    .login-button {
+      color: $dark-blue;
+      font-size: 14px;
+      width: 40%;
+      padding: 8px;
+      background-color: white;
+      border: 1px solid $dark-blue;
+      text-align: center;
+
+      &:hover {
+        background-color: $dark-blue;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    .logout-button {
+      color: white;
+      font-size: 14px;
+      width: 40%;
+      padding: 8px;
+      background-color: $dark-blue;
+      border: 1px solid $dark-blue;
+      text-align: center;
+
+      &:hover {
+        background-color: white;
+        color: $dark-blue;
+        cursor: pointer;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .toggle-button {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+}
