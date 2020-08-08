@@ -17,7 +17,7 @@ const Card = () => {
           <i
             id="icon"
             style={{ color: "#6BB718" }}
-            class="fas fa-greater-than"
+            className="fas fa-greater-than"
           ></i>
         </div>
       </div>

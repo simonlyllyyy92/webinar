@@ -1,0 +1,7 @@
+const LOGIN_USER = "LOGIN_USER"
+const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS"
+
+export const ActionTypes = {
+  LOGIN_USER,
+  LOGIN_USER_SUCCESS,
+}

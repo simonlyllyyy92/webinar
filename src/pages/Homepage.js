@@ -11,7 +11,6 @@ import Form from "../components/form/registerForm"
 function HomePage() {
   return (
     <div className="App">
-      <HeaderIndex />
       <SubHeaders />
       <WebinarSection />
       <IntroVideo />

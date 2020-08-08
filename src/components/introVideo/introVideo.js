@@ -22,7 +22,7 @@ const IntroVideo = () => {
                 color: "rgba(0, 0, 0, 0.65)",
                 fontSize: "0.8rem",
               }}
-              class="fas fa-greater-than"
+              className="fas fa-greater-than"
             ></i>
           </div>
         </div>
