@@ -89,7 +89,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 90px;
+            min-height: 90px;
 
             select {
               height: 52px;
@@ -126,13 +126,26 @@
                 box-sizing: border-box;
                 border-radius: 4px;
                 width: 17%;
+                @media screen and (max-width: 768px) {
+                  width: 100%;
+                  margin-bottom: 12px;
+                }
               }
+              @media screen and (max-width: 768px) {
+                flex-direction: column;
+
+                margin-bottom: 22px;
+              }
+
               input {
                 height: 40px;
                 border: 1px solid #c6c6c6;
                 box-sizing: border-box;
                 border-radius: 4px;
                 width: 80%;
+                @media screen and (max-width: 768px) {
+                  width: 100%;
+                }
               }
             }
           }
