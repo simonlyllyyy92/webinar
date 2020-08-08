@@ -1,0 +1,66 @@
+.toolbar {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: white;
+  height: 56px;
+  border-bottom: 1px solid #f5f5f5;
+
+  .toolbar_logo {
+    margin-left: 1rem;
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+  }
+
+  .toolbar_navigation {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+  }
+  .toolbar_navigation_items {
+    a {
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        color: #fa923f;
+      }
+      &:active {
+        color: #fa923f;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    li {
+      padding: 0 0.5rem;
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .toggle-button {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+}
