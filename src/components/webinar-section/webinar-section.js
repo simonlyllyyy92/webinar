@@ -1,6 +1,6 @@
 import React from "react"
 import Card from "./card"
-import "../../styles/webiar-section/webinarSection.styles.scss"
+import "../../styles/component/webiar-section/webinarSection.styles.scss"
 
 const WebinarSection = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react"
 
-import "../../styles/header/hamburger-button.styles.scss"
+import "../../styles/component/header/hamburger-button.styles.scss"
 
 const HamburgerButton = ({ handleOnclick }) => {
   return (

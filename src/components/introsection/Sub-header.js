@@ -1,5 +1,5 @@
 import React from "react"
-import "../../styles/introSection/introSection.styles.scss"
+import "../../styles/component/introSection/introSection.styles.scss"
 
 const SubHeaders = () => {
   return (

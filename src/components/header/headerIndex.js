@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import HeaderToolBar from "./header-toolbar"
+import "../../styles/component/header/headerIndex.styles.scss"
 
 import SlideDrawer from "./slideDrawer"
 
@@ -23,7 +24,7 @@ const HeaderIndex = () => {
   }
 
   return (
-    <div style={{ height: "100%" }}>
+    <div className="headerContainer">
       <HeaderToolBar handleOnclick={handleOnclick} />
       <SlideDrawer onShow={slideDrawerOpen} />
       {backdrop}

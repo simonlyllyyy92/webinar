@@ -1,4 +1,5 @@
 import React from "react"
+import "../../styles/component/registerForm/registerForm.styles.scss"
 
 const RegisterForm = () => {
   return (
@@ -12,8 +13,15 @@ const RegisterForm = () => {
               our professional business experts
             </p>
           </div>
-          <div>
-            <form onSubmit={() => console.log("submitted")}>
+          <div className="form-container">
+            <form className="form" onSubmit={() => console.log("submitted")}>
+              <div className="form-control">
+                <label>Topic</label>
+                <select>
+                  <option value="Topic1">This is the topic 1</option>
+                  <option value="Topic2">This is the topic 2</option>
+                </select>
+              </div>
               <div className="form-control">
                 <label>First Name</label>
                 <input type="text" placeholder="Enter First Name..." required />
@@ -28,20 +36,24 @@ const RegisterForm = () => {
               </div>
               <div className="form-control">
                 <label>Phone</label>
-                <select>
-                  <option value="+61">+61</option>
-                  <option value="+86">+86</option>
-                </select>
-                <input
-                  type="text"
-                  placeholder="Enter phone number..."
-                  required
-                />
+                <div className="form-control-child">
+                  <select>
+                    <option value="+61">+61</option>
+                    <option value="+86">+86</option>
+                  </select>
+                  <input
+                    type="text"
+                    placeholder="Enter phone number..."
+                    required
+                  />
+                </div>
               </div>
               <div className="form-control">
                 <label>Mobile Authentication</label>
-                <button>Get Code</button>
-                <input type="text" placeholder="Enter code" required />
+                <div className="form-control-child">
+                  <button disabled>Get Code</button>
+                  <input type="text" placeholder="Enter code" required />
+                </div>
               </div>
               <button type="submit" className="btn">
                 Register

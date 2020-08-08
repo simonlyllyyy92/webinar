@@ -1,5 +1,5 @@
 import React from "react"
-import "../../styles/header/slideDrawer.styles.scss"
+import "../../styles/component/header/slideDrawer.styles.scss"
 
 const SlideDrawer = (props) => {
   let drawerClasses = "slide-drawer"
@@ -10,12 +10,31 @@ const SlideDrawer = (props) => {
   return (
     <nav className={drawerClasses}>
       <ul>
-        <li>
-          <a href="/">Products</a>
-        </li>
-        <li>
-          <a href="/">Users</a>
-        </li>
+        <div style={{ marginBottom: "12px" }}>
+          <li>
+            <a href="/">Why ACY</a>
+          </li>
+          <li>
+            <a href="/">Products</a>
+          </li>
+          <li>
+            <a href="/">Platforms</a>
+          </li>
+          <li>
+            <a href="/">Education</a>
+          </li>
+          <li>
+            <a href="/">Partners</a>
+          </li>
+        </div>
+        <div>
+          <li>
+            <a href="/">Login</a>
+          </li>
+          <li>
+            <a href="/">Logout</a>
+          </li>
+        </div>
       </ul>
     </nav>
   )
