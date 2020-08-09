@@ -3,7 +3,7 @@ import "../../styles/component/introSection/introSection.styles.scss"
 
 const SubHeaders = () => {
   return (
-    <div className="intro-section">
+    <div className="intro-section" style={{ marginTop: "56px" }}>
       <div className="intro-section-content">
         <div className="intro-section-content-container">
           <h3>Forex Webinars</h3>

@@ -14,7 +14,13 @@ const RegisterForm = () => {
             </p>
           </div>
           <div className="form-container">
-            <form className="form" onSubmit={() => console.log("submitted")}>
+            <form
+              className="form"
+              onSubmit={(e) => {
+                e.preventDefault()
+                console.log("submitted")
+              }}
+            >
               <div className="form-control">
                 <label>Topic</label>
                 <select>

@@ -2,22 +2,29 @@ import React from "react"
 
 import "../../styles/component/header/header-toolbar.styles.scss"
 import HamburgerButton from "./hamburgerButton"
+import HeaderDemoLink from "./headerDemoLink"
 import Acy_image from "../../asset/acy_image.png"
+import { withRouter } from "react-router-dom"
 
-//connection with redux
 import { connect } from "react-redux"
-//action
-import { postUserLogin } from "../../store/authentication/action"
+import { postUserLogOut } from "../../store/authentication/action"
 
 class Toolbar extends React.Component {
-  handleUserLogin = () => {
-    this.props.postUserLogin({
-      email: "yuntest@mailinator.com",
-      password: "A123456",
-    })
+  navToLoginPage = () => {
+    this.props.history.push("/login")
+  }
+
+  handleLogout = () => {
+    this.props.postUserLogOut()
   }
 
   render() {
+    const token = this.props.loginData.token
+
+    let showLogin = token
+      ? "toolbar_navigation_items"
+      : "toolbar_navigation_items single"
+
     return (
       <header className="toolbar">
         <nav className="toolbar_navigation">
@@ -37,67 +44,25 @@ class Toolbar extends React.Component {
               />
             </div>
 
-            <ul>
-              <li className="dropdown">
-                <a href="/" className="dropbtn">
-                  Why ACY
-                </a>
-                <div className="dropdown-content">
-                  <a href="/">Link 1</a>
-                  <a href="/">Link 2</a>
-                  <a href="/">Link 3</a>
-                </div>
-              </li>
-              <li className="dropdown">
-                <a href="/" className="dropbtn">
-                  Products
-                </a>
-                <div className="dropdown-content">
-                  <a href="/">Link 1</a>
-                  <a href="/">Link 2</a>
-                  <a href="/">Link 3</a>
-                </div>
-              </li>
-              <li className="dropdown">
-                <a href="/" className="dropbtn">
-                  Platforms
-                </a>
-                <div className="dropdown-content">
-                  <a href="/">Link 1</a>
-                  <a href="/">Link 2</a>
-                  <a href="/">Link 3</a>
-                </div>
-              </li>
-              <li className="dropdown">
-                <a href="/" className="dropbtn">
-                  Education
-                </a>
-                <div className="dropdown-content">
-                  <a href="/">Link 1</a>
-                  <a href="/">Link 2</a>
-                  <a href="/">Link 3</a>
-                </div>
-              </li>
-              <li className="dropdown">
-                <a href="/" className="dropbtn">
-                  Partners
-                </a>
-                <div className="dropdown-content">
-                  <a href="/">Link 1</a>
-                  <a href="/">Link 2</a>
-                  <a href="/">Link 3</a>
-                </div>
-              </li>
-            </ul>
+            <HeaderDemoLink />
           </div>
 
           <div className="spacer"></div>
-          <div className="toolbar_navigation_items">
-            <div className="login-button" onClick={this.handleUserLogin}>
-              Login
-            </div>
-
-            <div className="logout-button">Logout</div>
+          <div className={showLogin}>
+            {token ? (
+              <div className="userName">
+                {this.props.loginData.user.nick_name}
+              </div>
+            ) : (
+              <div className="login-button" onClick={this.navToLoginPage}>
+                Login
+              </div>
+            )}
+            {token && (
+              <div className="logout-button" onClick={this.handleLogout}>
+                Logout
+              </div>
+            )}
           </div>
         </nav>
       </header>
@@ -110,7 +75,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  postUserLogin: (payload) => dispatch(postUserLogin(payload)),
+  postUserLogOut: () => dispatch(postUserLogOut()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Toolbar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Toolbar))

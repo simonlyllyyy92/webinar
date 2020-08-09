@@ -19,6 +19,17 @@ const authReducer = (state = INITIAL_STATE, action) => {
           error: "",
         },
       }
+    case ActionTypes.LOGOUT_USER_SUCCESS:
+      return {
+        ...state,
+        loginUser: {
+          data: {},
+          loading: false,
+          error: "",
+        },
+      }
+    case ActionTypes.CLEAR_TOKEN:
+      return INITIAL_STATE
     default:
       return state
   }
