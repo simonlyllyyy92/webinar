@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage" //window.localStorage
 
 import authReducer from "./authentication/reducer"
+import webinarReducer from "./webinar/reducer"
 
 const persistConfig = {
   key: "root", // at what point inside of our reducer object do we want to start
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   authReducer,
+  webinarReducer,
 })
 
 export default persistReducer(persistConfig, rootReducer)

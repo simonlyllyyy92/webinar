@@ -3,7 +3,7 @@ import "../../styles/component/registerForm/registerForm.styles.scss"
 
 const RegisterForm = () => {
   return (
-    <div className="register-form">
+    <div className="register-form" id="register-form">
       <div className="register-form-container">
         <div className="register-form-content">
           <div className="form-header">

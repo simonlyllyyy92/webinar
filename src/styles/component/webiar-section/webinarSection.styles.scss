@@ -12,8 +12,26 @@
 
   .webinar-card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     width: 90%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 630px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0px; /* Remove scrollbar space */
+      background: transparent; /* Optional: just make scrollbar invisible */
+    }
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+      border-radius: 14px;
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 14px;
+      }
+    }
   }
 }

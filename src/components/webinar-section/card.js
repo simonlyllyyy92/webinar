@@ -1,18 +1,41 @@
 import React from "react"
+import { useSelector } from "react-redux"
 import "../../styles/component/card/card.styles.scss"
+import parse from "html-react-parser"
+import { withRouter } from "react-router-dom"
 
-const Card = () => {
+const Card = ({ created_at, title, content, history }) => {
+  const htmlContent = parse(content)
+  const token = useSelector((state) => state.authReducer.loginUser.data.token)
+
+  const handleRegister = () => {
+    alert("You need to login before register")
+    history.push("/login")
+  }
+
   return (
     <div className="webinar-card">
       <div className="card-content">
         <div className="card-content-title">
-          <p className="card-content-timeline">31/10/2019</p>
-          <p className="card-content-subtitle">A card title is shown</p>
-          <p className="card-content-subscription">this is the card content</p>
-          <p className="card-content-timeZone">7pm-8:30pm EST</p>
+          <p className="card-content-timeline">{created_at}</p>
+          <p className="card-content-subtitle">{title}</p>
+          <div className="card-content-subscription">{htmlContent}</div>
+          <p className="card-content-timeZone">{created_at}</p>
         </div>
         <div className="card-content-register">
-          <button>Register Now</button>
+          {token ? (
+            <a
+              style={{ textDecoration: "none" }}
+              href="#register-form"
+              className="register-button"
+            >
+              Register Now
+            </a>
+          ) : (
+            <div onClick={handleRegister} className="register-button">
+              Register Now
+            </div>
+          )}
 
           <i
             id="icon"
@@ -25,4 +48,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default withRouter(Card)
