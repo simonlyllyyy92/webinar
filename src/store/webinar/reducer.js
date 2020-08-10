@@ -58,6 +58,16 @@ const webinarReducer = (state = INITIAL_STATE, action) => {
           error: "",
         },
       }
+    case ActionTypes.DELETE_FAVORITE_POST:
+      return {
+        ...state,
+        favorite_list: {
+          loading: true,
+          ...state.favorite_list.data,
+          error: "",
+        },
+      }
+
     default:
       return state
   }

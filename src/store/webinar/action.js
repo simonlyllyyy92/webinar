@@ -24,3 +24,8 @@ export const getFavoritePostList = (payload) => ({
   type: ActionTypes.GET_FAVORITE_POST_LIST,
   payload,
 })
+
+export const deleteFavoritePost = (payload) => ({
+  type: ActionTypes.DELETE_FAVORITE_POST,
+  payload,
+})

@@ -13,7 +13,7 @@ const WebinarSection = (props) => {
         <div className="webinar-card-container" onScroll={props.handleScroll}>
           {props.webinarList
             .filter((item) => {
-              return item.favourited === false
+              return item.favourited === props.favorited
             })
             .map((item) => (
               <Card
@@ -22,6 +22,7 @@ const WebinarSection = (props) => {
                 created_at={item.created_at}
                 title={item.title}
                 content={item.content}
+                unregister={props.favorited}
               />
             ))}
         </div>

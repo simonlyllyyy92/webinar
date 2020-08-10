@@ -5,9 +5,12 @@ import parse from "html-react-parser"
 import { withRouter } from "react-router-dom"
 
 //action
-import { storeTitleForRegister } from "../../store/webinar/action"
+import {
+  storeTitleForRegister,
+  deleteFavoritePost,
+} from "../../store/webinar/action"
 
-const Card = ({ id, created_at, title, content, history }) => {
+const Card = ({ id, created_at, title, content, history, unregister }) => {
   //dispatch setup
   const dispatch = useDispatch()
 
@@ -20,11 +23,18 @@ const Card = ({ id, created_at, title, content, history }) => {
   }
 
   const navToWebinarDetail = () => {
-    history.push(`/webinar/${id}`)
+    history.push({
+      pathname: `webinar/${id}`,
+      state: { favourited: unregister },
+    })
   }
 
   const transferTitle = (payload) => {
     dispatch(storeTitleForRegister(payload))
+  }
+
+  const removeFavoritePost = (payload) => {
+    dispatch(deleteFavoritePost(payload))
   }
 
   return (
@@ -42,9 +52,15 @@ const Card = ({ id, created_at, title, content, history }) => {
               style={{ textDecoration: "none" }}
               href="#register-form"
               className="register-button"
-              onClick={() => transferTitle({ title, id })}
+              onClick={() => {
+                if (unregister) {
+                  removeFavoritePost({ id })
+                } else {
+                  transferTitle({ title, id })
+                }
+              }}
             >
-              Register Now
+              {unregister ? "Unregister" : "Register Now"}
             </a>
           ) : (
             <div onClick={handleRegister} className="register-button">

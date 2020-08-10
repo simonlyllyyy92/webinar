@@ -8,8 +8,13 @@ import { objToQueryString } from "../utils"
 
 function* handleGetPostList(action) {
   const queryParams = objToQueryString(action.payload)
+  let token = yield select((state) => state.authReducer.loginUser.data.token)
   try {
-    const res = yield axiosBaseUrl.get(`/posts?${queryParams}`)
+    const res = yield axiosBaseUrl.get(`/posts?${queryParams}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
 
     if (res.status === 200) {
       yield put({
@@ -17,6 +22,7 @@ function* handleGetPostList(action) {
         payload: res.data, //res.data = {data:[...], meta}
       })
     }
+    console.log("get post list", res)
   } catch (e) {
     console.log(e)
   }
@@ -53,7 +59,7 @@ function* handlePostRegister(action) {
         },
       }
     )
-    console.log(res)
+    console.log("favorite a post", res)
     if (res.status === 200) {
       alert("regiester succeed !")
       history.push("/registerd")
@@ -67,18 +73,39 @@ function* handleGetFavorite(action) {
   let token = yield select((state) => state.authReducer.loginUser.data.token)
   const queryParams = objToQueryString(action.payload)
   try {
-    const res = yield axiosBaseUrl.get(
-      `/posts?${queryParams}`,
-      {
-        //body
+    const res = yield axiosBaseUrl.get(`/posts?${queryParams}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
+    })
+    console.log("favorite post list", res)
+    if (res.status === 200) {
+      yield put({
+        type: ActionTypes.GET_FAVORITE_POST_LIST_SUCCESS,
+        payload: res.data,
+      })
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* handleDeleteFavorite(action) {
+  let token = yield select((state) => state.authReducer.loginUser.data.token)
+  try {
+    const res = yield axiosBaseUrl.delete(
+      `/favourites/post/${action.payload.id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     )
-    console.log(res)
+    console.log("delete favorite success", res)
+    if (res.status === 200) {
+      history.push("/")
+      alert("Unregister succesfully")
+    }
   } catch (e) {
     console.log(e)
   }
@@ -103,12 +130,17 @@ function* watchPostRegister() {
 function* watchGetFavorite() {
   yield takeLatest(ActionTypes.GET_FAVORITE_POST_LIST, handleGetFavorite)
 }
+//delete favorite
+function* watchDeleteFavorite() {
+  yield takeLatest(ActionTypes.DELETE_FAVORITE_POST, handleDeleteFavorite)
+}
 
 const sagas = [
   fork(watchGetPostList),
   fork(watchGetMorePostList),
   fork(watchPostRegister),
   fork(watchGetFavorite),
+  fork(watchDeleteFavorite),
 ]
 
 export default sagas

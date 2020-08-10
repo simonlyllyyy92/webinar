@@ -12,10 +12,20 @@ class WebinarDetail extends React.Component {
     //get the target webinar detail
     const id = this.props.match.params.id
     const webinarList = this.props.webinarList.data
-    const webinarDetail = webinarList.find((element) => {
-      return element.id == id
-    })
-    console.log(webinarDetail)
+    const favoriteList = this.props.favoriteList.data
+    let webinarDetail
+    if (this.props.location.state.favourited) {
+      webinarDetail = favoriteList.find((element) => {
+        return element.id == id
+      })
+    } else {
+      webinarDetail = webinarList.find((element) => {
+        // eslint-disable-next-line
+        return element.id == id
+      })
+    }
+
+    console.log(webinarList)
 
     //demo title and subTitle for detail Page
     const title = webinarDetail.title || "网络讲座"
@@ -42,6 +52,7 @@ class WebinarDetail extends React.Component {
 
 const mapStateToProps = (state) => ({
   webinarList: state.webinarReducer.webinar_list.data,
+  favoriteList: state.webinarReducer.favorite_list.data,
 })
 
 export default connect(mapStateToProps)(WebinarDetail)

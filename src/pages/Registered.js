@@ -7,25 +7,25 @@ class Registered extends React.Component {
   componentDidMount() {
     this.props.getFavorites({
       author: this.props.loginData.user.id,
-      favourites: 1,
+      favourited: 1,
     })
   }
 
-  handleOnScroll = (e) => {
-    let element = e.target
-    if (element.scrollWidth === element.scrollLeft + element.clientWidth) {
-      console.log("get more favorites")
-    }
-  }
   render() {
     return (
-      <WebinarSection loadingStatus={true} handleScroll={this.handleOnScroll} />
+      <WebinarSection
+        loadingStatus={this.props.loadingStatus}
+        webinarList={this.props.favoriteList.data}
+        favorited={true}
+      />
     )
   }
 }
 
 const mapStateToProps = (state) => ({
   loginData: state.authReducer.loginUser.data,
+  favoriteList: state.webinarReducer.favorite_list.data,
+  loadingStatus: state.webinarReducer.favorite_list.loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

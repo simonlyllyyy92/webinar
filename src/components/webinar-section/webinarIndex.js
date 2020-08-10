@@ -28,6 +28,7 @@ class WebinarIndex extends React.Component {
         loadingStatus={this.props.loadingStatus}
         handleScroll={this.handleOnScroll}
         webinarList={this.props.webinarList.data}
+        favorited={false}
       />
     )
   }

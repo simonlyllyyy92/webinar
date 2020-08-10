@@ -5,7 +5,6 @@ import LoginPage from "./pages/Loginpage"
 import HeaderIndex from "./components/header/headerIndex"
 import WebinarDetail from "./pages/WebinarDetail"
 import Registerd from "./pages/Registered"
-import Test from "./pages/Test"
 
 //utils
 import history from "./utils/history"
@@ -22,7 +21,6 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/webinar/:id" component={WebinarDetail} />
           <Route path="/registerd" component={Registerd} />
-          <Route path="/test" component={Test} />
         </Switch>
       </div>
     </Router>

@@ -14,6 +14,10 @@ class Toolbar extends React.Component {
     this.props.history.push("/login")
   }
 
+  navToHome = () => {
+    this.props.history.push("/")
+  }
+
   handleLogout = () => {
     this.props.postUserLogOut()
   }
@@ -39,8 +43,10 @@ class Toolbar extends React.Component {
                 style={{
                   objectFit: "cover",
                   height: "40px",
+                  cursor: "pointer",
                 }}
                 alt="LOGO"
+                onClick={this.navToHome}
               />
             </div>
 
