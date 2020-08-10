@@ -10,6 +10,11 @@ const INITIAL_STATE = {
     title: "Topic 1",
     id: 1,
   },
+  favorite_list: {
+    data: {},
+    loading: true,
+    error: "",
+  },
 }
 
 const webinarReducer = (state = INITIAL_STATE, action) => {
@@ -41,6 +46,16 @@ const webinarReducer = (state = INITIAL_STATE, action) => {
         register: {
           title: action.payload.title,
           id: action.payload.id,
+        },
+      }
+
+    case ActionTypes.GET_FAVORITE_POST_LIST_SUCCESS:
+      return {
+        ...state,
+        favorite_list: {
+          data: action.payload,
+          loading: false,
+          error: "",
         },
       }
     default:

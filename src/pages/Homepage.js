@@ -3,7 +3,7 @@ import "../styles/pages/homepage.styles.scss"
 
 //components
 import SubHeaders from "../components/introsection/Sub-header"
-import WebinarSection from "../components/webinar-section/webinar-section"
+import WebinarSection from "../components/webinar-section/webinarIndex"
 import IntroVideo from "../components/introVideo/introVideo"
 import Form from "../components/form/registerForm"
 

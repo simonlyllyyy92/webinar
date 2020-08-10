@@ -9,7 +9,7 @@ import { objToQueryString } from "../utils"
 function* handleGetPostList(action) {
   const queryParams = objToQueryString(action.payload)
   try {
-    const res = yield axiosBaseUrl.get("/posts?" + queryParams)
+    const res = yield axiosBaseUrl.get(`/posts?${queryParams}`)
 
     if (res.status === 200) {
       yield put({
@@ -63,6 +63,27 @@ function* handlePostRegister(action) {
   }
 }
 
+function* handleGetFavorite(action) {
+  let token = yield select((state) => state.authReducer.loginUser.data.token)
+  const queryParams = objToQueryString(action.payload)
+  try {
+    const res = yield axiosBaseUrl.get(
+      `/posts?${queryParams}`,
+      {
+        //body
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    console.log(res)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 //get list
 function* watchGetPostList() {
   yield takeLatest(ActionTypes.GET_POST_LIST, handleGetPostList)
@@ -78,10 +99,16 @@ function* watchPostRegister() {
   yield takeLatest(ActionTypes.POST_REGISTER, handlePostRegister)
 }
 
+//post register
+function* watchGetFavorite() {
+  yield takeLatest(ActionTypes.GET_FAVORITE_POST_LIST, handleGetFavorite)
+}
+
 const sagas = [
   fork(watchGetPostList),
   fork(watchGetMorePostList),
   fork(watchPostRegister),
+  fork(watchGetFavorite),
 ]
 
 export default sagas

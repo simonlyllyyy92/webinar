@@ -19,3 +19,8 @@ export const postRegister = (payload) => ({
   type: ActionTypes.POST_REGISTER,
   payload,
 })
+
+export const getFavoritePostList = (payload) => ({
+  type: ActionTypes.GET_FAVORITE_POST_LIST,
+  payload,
+})
