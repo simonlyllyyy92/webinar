@@ -37,6 +37,32 @@ function* handleGetMorePostList(action) {
   }
 }
 
+function* handlePostRegister(action) {
+  let token = yield select((state) => state.authReducer.loginUser.data.token)
+  try {
+    const res = yield axiosBaseUrl.post(
+      "/favourites",
+      {
+        //body
+        ids: [action.payload],
+        model: "post",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    console.log(res)
+    if (res.status === 200) {
+      alert("regiester succeed !")
+      history.push("/registerd")
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 //get list
 function* watchGetPostList() {
   yield takeLatest(ActionTypes.GET_POST_LIST, handleGetPostList)
@@ -47,6 +73,15 @@ function* watchGetMorePostList() {
   yield takeLatest(ActionTypes.GET_MORE_POST_LIST, handleGetMorePostList)
 }
 
-const sagas = [fork(watchGetPostList), fork(watchGetMorePostList)]
+//post register
+function* watchPostRegister() {
+  yield takeLatest(ActionTypes.POST_REGISTER, handlePostRegister)
+}
+
+const sagas = [
+  fork(watchGetPostList),
+  fork(watchGetMorePostList),
+  fork(watchPostRegister),
+]
 
 export default sagas

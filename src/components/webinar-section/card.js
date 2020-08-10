@@ -1,16 +1,30 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import "../../styles/component/card/card.styles.scss"
 import parse from "html-react-parser"
 import { withRouter } from "react-router-dom"
 
-const Card = ({ created_at, title, content, history }) => {
+//action
+import { storeTitleForRegister } from "../../store/webinar/action"
+
+const Card = ({ id, created_at, title, content, history }) => {
+  //dispatch setup
+  const dispatch = useDispatch()
+
   const htmlContent = parse(content)
   const token = useSelector((state) => state.authReducer.loginUser.data.token)
 
   const handleRegister = () => {
     alert("You need to login before register")
     history.push("/login")
+  }
+
+  const navToWebinarDetail = () => {
+    history.push(`/webinar/${id}`)
+  }
+
+  const transferTitle = (payload) => {
+    dispatch(storeTitleForRegister(payload))
   }
 
   return (
@@ -28,6 +42,7 @@ const Card = ({ created_at, title, content, history }) => {
               style={{ textDecoration: "none" }}
               href="#register-form"
               className="register-button"
+              onClick={() => transferTitle({ title, id })}
             >
               Register Now
             </a>
@@ -39,10 +54,13 @@ const Card = ({ created_at, title, content, history }) => {
 
           <i
             id="icon"
-            style={{ color: "#6BB718" }}
+            style={{ color: "#01254f" }}
             className="fas fa-greater-than"
           ></i>
         </div>
+      </div>
+      <div className="overlay" onClick={navToWebinarDetail}>
+        <div className="overlay-text">Click for detail</div>
       </div>
     </div>
   )

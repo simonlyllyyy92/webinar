@@ -9,6 +9,7 @@
   .intro-vedio-container {
     width: 90%;
     display: flex;
+    justify-content: space-between;
     @media screen and (max-width: 769px) {
       flex-direction: column;
       justify-content: space-around;
@@ -16,7 +17,7 @@
     }
     .intro-vedio-content-left {
       display: flex;
-      width: 50%;
+      width: 40%;
       flex-direction: column;
       justify-content: center;
       @media screen and (max-width: 769px) {
@@ -36,7 +37,7 @@
         color: $dark-blue;
       }
 
-      p {
+      div {
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -46,20 +47,26 @@
       .show-more {
         display: flex;
         align-items: center;
+        height: 24px;
+        margin-top: 14px;
+
         &:hover {
           opacity: 0.7;
           cursor: pointer;
         }
 
-        button {
+        div {
           font-style: normal;
           font-weight: normal;
+
           font-size: 16px;
-          line-height: 20px;
-          border: none;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          margin-bottom: 4px;
           background: none;
           color: $light-grey;
-          margin-right: 12px;
+          margin-right: 14px;
 
           &:hover {
             opacity: 0.7;
@@ -79,6 +86,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      .player-wrapper {
+        height: auto;
+        max-width: 100%;
+        display: flex;
+      }
 
       @media screen and (max-width: 769px) {
         width: 100%;

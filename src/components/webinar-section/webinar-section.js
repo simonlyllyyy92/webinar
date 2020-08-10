@@ -42,6 +42,7 @@ class WebinarSection extends React.Component {
               .map((item) => (
                 <Card
                   key={item.id}
+                  id={item.id}
                   created_at={item.created_at}
                   title={item.title}
                   content={item.content}

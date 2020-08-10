@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 428px;
+  min-height: 428px;
   width: 100%;
 
   .intro-section-content {
     display: flex;
     width: 70%;
-    height: 220px;
+    min-height: 220px;
     justify-content: center;
     align-items: center;
 
@@ -20,7 +20,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 120px;
+      min-height: 120px;
 
       h3 {
         font-size: 28px;
@@ -30,13 +30,16 @@
         color: $dark-blue;
       }
 
-      p {
-        text-align: center;
+      .start-align {
+        text-align: start;
         font-size: 16px;
         font-weight: normal;
         font-style: normal;
         line-height: 24px;
         color: $light-grey;
+        &.no {
+          text-align: center;
+        }
       }
     }
   }

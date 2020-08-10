@@ -1,20 +1,35 @@
 import React from "react"
 import "../../styles/component/IntroVideo/introVideo.styles.scss"
+import YoutubePlayer from "react-player"
 
-const IntroVideo = () => {
+const IntroVideo = (props) => {
+  const HomePageContent = (
+    <p>
+      With more than 15 years of experience covering both the FX and CFD
+      markets, Alistair has extensive knowledge covering algorithmic trading,
+      market analysis and an impressive educational background.
+      <br />
+      <br />
+      As the author of ‘Essentials for Trading Students – An Overview of the
+      Basics for Aspiring Traders’, which was released in 2017, Alistair will
+      take any aspiring trader from the basics right through to advanced
+      analytics used in institutional funds.
+      <br />
+      <br />
+      At the core of Alistair’s teachings is the ability to help each trader
+      uncover their ‘Trading DNA', helping them flourish with the skills and
+      timeframes that work best for them.
+    </p>
+  )
+
   return (
     <div className="intro-vedio">
       <div className="intro-vedio-container">
         <div className="intro-vedio-content-left">
-          <h4>Meet Your Host - Alistair Schultz</h4>
-          <p>
-            ACY Securities is a global leader and true ECN forex broker. Using a
-            no dealing desk system, we provide lightning-fast and seamless trade
-            execution with direct market access to a deep source of liquidity
-            provided by some of the world's leading banks. Based in Sydney
-          </p>
+          <h4>{props.content_title || "Meet Your Host - Alistair Schultz"}</h4>
+          <div>{props.content_body || HomePageContent}</div>
           <div className="show-more">
-            <button>See more</button>
+            <div>{props.cn ? "查看详情" : "See more"}</div>
 
             <i
               id="icon"
@@ -26,7 +41,11 @@ const IntroVideo = () => {
             ></i>
           </div>
         </div>
-        <div className="intro-vedio-content-right">here is the vedio</div>
+        <div className="intro-vedio-content-right">
+          <div className="player-wrapper">
+            <YoutubePlayer url="https://www.youtube.com/watch?v=PPDNjvHUdzQ&origin=http://localhost:3000" />
+          </div>
+        </div>
       </div>
     </div>
   )

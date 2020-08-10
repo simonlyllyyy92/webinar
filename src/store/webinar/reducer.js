@@ -6,6 +6,10 @@ const INITIAL_STATE = {
     loading: true,
     error: "",
   },
+  register: {
+    title: "Topic 1",
+    id: 1,
+  },
 }
 
 const webinarReducer = (state = INITIAL_STATE, action) => {
@@ -29,6 +33,14 @@ const webinarReducer = (state = INITIAL_STATE, action) => {
           },
           loading: false,
           error: "",
+        },
+      }
+    case ActionTypes.STORE_TITLE_FOR_REGISTER:
+      return {
+        ...state,
+        register: {
+          title: action.payload.title,
+          id: action.payload.id,
         },
       }
     default:
