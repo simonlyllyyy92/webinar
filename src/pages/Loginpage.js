@@ -6,7 +6,7 @@ import { postUserLogin } from "../store/authentication/action"
 import LoginForm from "../components/form/loginForm"
 import "../styles/pages/loginPage.styles.scss"
 
-class Loginpage extends React.Component {
+export class Loginpage extends React.Component {
   constructor() {
     super()
     this.state = {

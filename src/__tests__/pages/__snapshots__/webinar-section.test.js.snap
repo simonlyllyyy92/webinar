@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render webinar section with cards 1`] = `
+<div
+  className="webinar-section"
+>
+  <div
+    className="webinar-card-container"
+    onScroll={[MockFunction]}
+  >
+    <withRouter(Card)
+      content="this is the content"
+      created_at="2020"
+      id="123"
+      key="123"
+      title="this is the title"
+      unregister={true}
+    />
+    <withRouter(Card)
+      content="this is the content"
+      created_at="2020"
+      id="125"
+      key="125"
+      title="this is the title"
+      unregister={true}
+    />
+  </div>
+</div>
+`;
