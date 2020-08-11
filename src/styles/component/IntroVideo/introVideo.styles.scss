@@ -5,10 +5,13 @@
   display: flex;
   justify-content: center;
   min-height: 758px;
+  height: fit-content;
 
   .intro-vedio-container {
     width: 90%;
     display: flex;
+    height: fit-content;
+    margin: auto;
     justify-content: space-between;
     @media screen and (max-width: 769px) {
       flex-direction: column;
