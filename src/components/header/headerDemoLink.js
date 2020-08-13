@@ -1,8 +1,11 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
+import { connect } from "react-redux"
 import "../../styles/component/header/headerDemoLink.styles.scss"
 
-const HeaderDemoLink = ({ history }) => {
+const HeaderDemoLink = ({ loginData, history }) => {
+  const token = loginData.token
+
   const navToRegistered = () => {
     history.push("/registerd")
   }
@@ -48,13 +51,19 @@ const HeaderDemoLink = ({ history }) => {
           <a href="/">Link 3</a>
         </div>
       </li>
-      <li style={{ cursor: "pointer" }} className="dropdown">
-        <div onClick={navToRegistered} className="dropbtn">
-          Registered
-        </div>
-      </li>
+      {token && (
+        <li style={{ cursor: "pointer" }} className="dropdown">
+          <div onClick={navToRegistered} className="dropbtn">
+            Registered
+          </div>
+        </li>
+      )}
     </ul>
   )
 }
 
-export default withRouter(HeaderDemoLink)
+const mapStateToProps = (state) => ({
+  loginData: state.authReducer.loginUser.data,
+})
+
+export default withRouter(connect(mapStateToProps)(HeaderDemoLink))

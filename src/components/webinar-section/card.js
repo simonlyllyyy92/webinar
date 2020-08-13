@@ -41,7 +41,7 @@ const Card = ({ id, created_at, title, content, history, unregister }) => {
     <div className="webinar-card">
       <div className="card-content">
         <div className="card-content-title">
-          <p className="card-content-timeline">{created_at}</p>
+          <p className="card-content-timeline">{created_at.split(" ")[0]}</p>
           <p className="card-content-subtitle">{title}</p>
           <div className="card-content-subscription">{htmlContent}</div>
           <p className="card-content-timeZone">{created_at}</p>
